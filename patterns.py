@@ -47,9 +47,9 @@ class Event:
 
 events = [Event(datetime_list[0], data_5m['Close'].get(0), rsis_5m.iloc[0], rsismas_5m.iloc[0], rsis_15m.iloc[0], 
                 rsismas_15m.iloc[0], rsis_30m.iloc[0], rsismas_30m.iloc[0], rsis_60m.iloc[0], rsismas_60m.iloc[0],
-               rsis_1d.iloc[28], rsismas_1d.iloc[28])]
+               rsis_1d.iloc[27], rsismas_1d.iloc[27])]
 
-#rsis_5m: rsi at 15:00 means rsi value at 15:00
+#rsis_5m: rsi at 15:45 means rsi value at 15:50
 #rsis_15m: rsi at 14:45 means rsi value at 15:00
 #rsis_30m: rsi at 14:30 means rsi value at 15:00
 #rsis_60m: rsi at 14:30 means rsi value at 15:30
@@ -69,8 +69,8 @@ for num in range(1, data_5m.shape[0]):
     current_rsi_1d = rsis_1d[int((rsi_1d_counter / 78)) + 28]
     current_rsisma_1d = rsismas_1d[int((rsi_1d_counter / 78)) + 28]
     
-    currentEvent = Event(datetime_list[num], data_5m['Close'].get(num), rsis_5m.iloc[num], 
-                         rsismas_5m.iloc[num], current_rsi_15m, current_rsisma_15m, current_rsi_30m,
+    currentEvent = Event(datetime_list[num], data_5m['Close'].get(num), rsis_5m.iloc[num - 1], 
+                         rsismas_5m.iloc[num - 1], current_rsi_15m, current_rsisma_15m, current_rsi_30m,
                         current_rsisma_30m, current_rsi_60m, current_rsisma_60m, current_rsi_1d,
                         current_rsisma_1d)
     
